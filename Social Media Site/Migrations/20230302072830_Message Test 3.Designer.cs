@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Social_Media_Site.Data;
 
@@ -11,9 +12,10 @@ using Social_Media_Site.Data;
 namespace Social_Media_Site.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230302072830_Message Test 3")]
+    partial class MessageTest3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -261,6 +263,9 @@ namespace Social_Media_Site.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ReceiverId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReciverId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("SenderId")
@@ -268,7 +273,7 @@ namespace Social_Media_Site.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ReceiverId");
+                    b.HasIndex("ReciverId");
 
                     b.HasIndex("SenderId");
 
@@ -370,15 +375,15 @@ namespace Social_Media_Site.Migrations
 
             modelBuilder.Entity("Social_Media_Site.Models.Message", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Receiver")
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Reciver")
                         .WithMany()
-                        .HasForeignKey("ReceiverId");
+                        .HasForeignKey("ReciverId");
 
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Sender")
                         .WithMany()
                         .HasForeignKey("SenderId");
 
-                    b.Navigation("Receiver");
+                    b.Navigation("Reciver");
 
                     b.Navigation("Sender");
                 });

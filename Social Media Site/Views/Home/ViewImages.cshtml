@@ -1,0 +1,14 @@
+﻿@model Tuple<string, List<Images>>
+
+@if (Model == null)
+{
+    <h2>No Images for this User</h2>
+}
+else
+{
+    <a href="/Profile/@Model.Item1"><h1>Back To User Page</h1></a>
+    foreach (Images image in Model.Item2)
+    {
+        <partial name="_ImagePartialView.cshtml" for="@image" />        
+    }
+}

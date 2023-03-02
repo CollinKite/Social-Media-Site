@@ -1,10 +1,15 @@
-﻿@model Tuple<UserProfile, List<Message>, List<Images>>
-
-@if (Model != null)
+﻿@using Microsoft.AspNetCore.Identity;
+@model Tuple<UserProfile, List<Message>, List<Images>, bool>
+@inject UserManager<IdentityUser> UserManager
+@if (Model.Item1 != null)
 {
     <div class="border p-3 mt-4">
         <div class="row pb-2">
             <h2 class="text-primary">User Profile</h2>
+            @if(Model.Item4)
+            {
+                <a asp-action="EditUser" asp-controller="Home"><h4 class="text-secondary">Edit Profile</h4></a>
+            }
             <hr />
         </div>
         <div class="row">
@@ -33,11 +38,38 @@
                     </div>
                 </div>
             </div>
+        </div>    
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Comments - <a href="/Comment/@Model.Item1.UserId">Add Comment</a></h4>
+            <div class="list-group mt-2">
+                @foreach (var message in Model.Item2)
+                {
+                    <div class="list-group-item">
+                        <h6><a href="/Profile/@message.SenderId">@await message.GetSenderNameAsync(UserManager)</a> - @message.GetDate()</h6>
+                        <p>@message.Content</p>
+                    </div>
+                }
+            </div>
         </div>
-        
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h4><a href="/Images/@Model.Item1.UserId">Images Uploaded</a></h4>
+            <div class="d-flex flex-wrap">
+                @foreach (var image in Model.Item3)
+                {
+                        <div class="p-2">
+                            <img src="@image.Image" class="img-fluid" />
+                        </div>
+                }
+            </div>
+        </div>
     </div>
 }
 else
 {
     <h1>No Profile Found</h1>
+    <p>Is this Your Page? Setup Your Profile -> <a asp-controller="Home" asp-action="EditUser">Here</a></p>
 }

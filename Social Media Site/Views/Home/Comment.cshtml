@@ -1,0 +1,22 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@inject UserManager<IdentityUser> UserManager
+@model Message
+@if(Model != null)
+{
+    <form asp-action="Comment" asp-controller="Home" method="post">
+        <div class="border p-3 mt-4">
+            <div class="row pb-2">
+                <h2 class="text-primary">Writing a Comment for @await Model.GetReceiverNameAsync(UserManager) </h2>
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Content"></label>
+                <input asp-for="Content" class="form-control" />
+                <input asp-for="ReceiverId" type="hidden" value="@Model.ReceiverId"/>
+                <span asp-validation-for="Content" class="error-messages"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </div>
+    </form>
+}
