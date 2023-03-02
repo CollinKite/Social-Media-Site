@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Social_Media_Site.Data;
+using Social_Media_Site.Models;
 
 namespace Social_Media_Site
 {
@@ -42,7 +43,7 @@ namespace Social_Media_Site
                 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
                 options.User.RequireUniqueEmail = true;
             }
-);
+            );
 
 
             var app = builder.Build();

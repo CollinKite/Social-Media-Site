@@ -16,3 +16,8 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.about-img {
+    width: 700px;
+    height: 900px;
+}

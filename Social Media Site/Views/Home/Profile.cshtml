@@ -1,0 +1,43 @@
+﻿@model Tuple<UserProfile, List<Message>, List<Images>>
+
+@if (Model != null)
+{
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">User Profile</h2>
+            <hr />
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="@Model.Item1.Image" class="img-fluid" />
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Name</h4>
+                        <p>@Model.Item1.Name</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Age</h4>
+                        <p>@Model.Item1.Age</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Likes</h4>
+                        <p>@Model.Item1.Likes</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Dislikes</h4>
+                        <p>@Model.Item1.Dislikes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+}
+else
+{
+    <h1>No Profile Found</h1>
+}

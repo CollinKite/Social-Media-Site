@@ -1,0 +1,37 @@
+﻿@model UserProfile
+<form asp-action="EditUser" asp-controller="Home" method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Edit User</h2>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="error-messages"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Age"></label>
+            <input asp-for="Age" class="form-control" />
+            <span asp-validation-for="Age" class="error-messages"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Likes"></label>
+            <input asp-for="Likes" class="form-control" />
+            <span asp-validation-for="Likes" class="error-messages"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Dislikes"></label>
+            <input asp-for="Dislikes" class="form-control" />
+            <span asp-validation-for="Dislikes" class="error-messages"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Image"></label>
+            <input asp-for="Image" class="form-control" />
+            <span asp-validation-for="Image" class="error-messages"></span>
+            <input asp-for="Id" type="hidden" value="@Model.Id" />
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+</form>
