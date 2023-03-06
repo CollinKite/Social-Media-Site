@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ID6NP.Areas.Admin.Pages.Roles
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class AddUseRoleModel : PageModel
     {
         private RoleManager<IdentityRole> RoleManager { get; set; }
